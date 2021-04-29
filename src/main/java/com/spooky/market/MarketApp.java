@@ -1,10 +1,11 @@
 package com.spooky.market;
 
-import company.market.task7.model.Cashier;
-import company.market.task7.model.Check;
-import company.market.task7.model.Item;
-import company.market.task7.model.Market;
-import company.market.task7.service.CheckService;
+
+import com.spooky.market.model.Cashier;
+import com.spooky.market.model.Check;
+import com.spooky.market.model.Item;
+import com.spooky.market.model.Market;
+import com.spooky.market.service.CheckService;
 
 import java.util.Date;
 
@@ -25,7 +26,9 @@ public class MarketApp {
         Market market = new Market();
         market.setName("          Malwart");
         market.setRow(6);
-        service.printCheck(market,cashier1,check,6);
-        service.writeCheck(market,cashier1,check,6);
+        check.setCashier(cashier1);
+        check.setMarket(market);
+        check.setRow(3);
+        service.saveReports(check);
     }
 }

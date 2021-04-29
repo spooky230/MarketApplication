@@ -1,34 +1,24 @@
 package com.spooky.market.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlType;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(propOrder = {"name","price"})
 public class Item {
+    @XmlAttribute
     private String name;
+    @XmlAttribute
     private double price;
-    public Item(){
-
-    }
-    public Item(String name,double price){
-        this.name = name;
-        this.price = price;
-    }
-
-    public String getName() {
-        return name;
-    }
-    public double getPrice() {
-        return price;
-    }
-    public void setName(String name){
-        this.name = name;
-    }
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    @Override
-    public String toString() {
-        return "Item{" +
-                "name='" + name + '\'' +
-                ", price=" + price +
-                '}';
-    }
 }

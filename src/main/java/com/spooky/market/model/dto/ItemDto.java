@@ -1,5 +1,6 @@
-package com.spooky.market.model;
+package com.spooky.market.model.dto;
 
+import com.spooky.market.model.Item;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,13 +11,11 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
+@XmlType(propOrder = {"name","price","count"})
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(propOrder = {"name","row"})
-public class Market {
+public class ItemDto extends Item {
     @XmlAttribute
-    private String name;
-    @XmlAttribute
-    private int row;
+    private int count;
 }
