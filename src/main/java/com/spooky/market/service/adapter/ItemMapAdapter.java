@@ -10,6 +10,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ *  Convert from Map<Item,Integer> ---> to ItemCollectionDTO
+ */
 public class ItemMapAdapter extends XmlAdapter<ItemCollectionDto, Map<Item,Integer>>{
 
 
