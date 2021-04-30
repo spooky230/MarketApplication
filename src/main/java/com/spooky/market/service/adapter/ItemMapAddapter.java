@@ -1,22 +1,31 @@
 package com.spooky.market.service.adapter;
 
 import com.spooky.market.model.Item;
+import com.spooky.market.model.dto.ItemCollectionDto;
 import com.spooky.market.model.dto.ItemDto;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-public class ItemMapAddapter extends XmlAdapter<List<ItemDto>, Map<Item,Integer>>{
+public class ItemMapAddapter extends XmlAdapter<ItemCollectionDto, Map<Item,Integer>>{
 
 
     @Override
-    public Map<Item, Integer> unmarshal(List<ItemDto> v) throws Exception {
-        return null;
+    public Map<Item, Integer> unmarshal(ItemCollectionDto dtoList) throws Exception {
+
+        Map<Item, Integer> itemsMap = new HashMap<>();
+        dtoList.getItems().forEach(itemDto -> itemsMap.put(itemDto,itemDto.getQuantity()));
+        return itemsMap;
     }
 
     @Override
-    public List<ItemDto> marshal(Map<Item, Integer> v) throws Exception {
-        return null;
+    public ItemCollectionDto marshal(Map<Item, Integer> itemsMap) throws Exception {
+
+        ItemCollectionDto itemDtos = new ItemCollectionDto();
+        itemsMap.forEach((item, count) -> itemDtos.getItems().add(new ItemDto(item.getName(),item.getPrice(),count)));
+        return itemDtos;
     }
 }
