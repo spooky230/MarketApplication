@@ -1,6 +1,6 @@
 package com.spooky.market.model;
 
-import com.spooky.market.service.adapter.ItemMapAddapter;
+import com.spooky.market.service.adapter.ItemMapAdapter;
 import com.sun.istack.internal.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,7 +26,7 @@ public class Check {
     private Market market;
     @XmlElement
     private int row;
-    @XmlJavaTypeAdapter(ItemMapAddapter.class)
+    @XmlJavaTypeAdapter(ItemMapAdapter.class)
     @XmlElement
     private Map<Item,Integer>items = new LinkedHashMap<>();
     @XmlElement

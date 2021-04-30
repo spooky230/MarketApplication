@@ -20,6 +20,5 @@ import java.util.List;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ItemCollectionDto {
     @XmlElement(name = "Item")
-    @XmlElementWrapper(name = "Items")
     private List<ItemDto> items = new ArrayList<>();
 }

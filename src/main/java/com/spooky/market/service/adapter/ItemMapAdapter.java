@@ -10,16 +10,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-public class ItemMapAddapter extends XmlAdapter<ItemCollectionDto, Map<Item,Integer>>{
+public class ItemMapAdapter extends XmlAdapter<ItemCollectionDto, Map<Item,Integer>>{
 
-
-    @Override
-    public Map<Item, Integer> unmarshal(ItemCollectionDto dtoList) throws Exception {
-
-        Map<Item, Integer> itemsMap = new HashMap<>();
-        dtoList.getItems().forEach(itemDto -> itemsMap.put(itemDto,itemDto.getQuantity()));
-        return itemsMap;
-    }
 
     @Override
     public ItemCollectionDto marshal(Map<Item, Integer> itemsMap) throws Exception {
@@ -27,5 +19,13 @@ public class ItemMapAddapter extends XmlAdapter<ItemCollectionDto, Map<Item,Inte
         ItemCollectionDto itemDtos = new ItemCollectionDto();
         itemsMap.forEach((item, count) -> itemDtos.getItems().add(new ItemDto(item.getName(),item.getPrice(),count)));
         return itemDtos;
+    }
+
+    @Override
+    public Map<Item, Integer> unmarshal(ItemCollectionDto dtoList) throws Exception {
+
+        Map<Item, Integer> itemsMap = new HashMap<>();
+        dtoList.getItems().forEach(itemDto -> itemsMap.put(itemDto,itemDto.getQuantity()));
+        return itemsMap;
     }
 }
